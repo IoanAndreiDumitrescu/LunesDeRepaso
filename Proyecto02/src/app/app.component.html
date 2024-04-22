@@ -1,0 +1,15 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <p>
+    <label for="nombre1">Nombre1</label>
+    <input type="text" id="nombre1" name="nombre1" formControlName="nombre1" />
+  </p>
+  <p>
+    <label for="nombre2">Nombre2</label>
+    <input type="text" id="nombre2" name="nombre2" formControlName="nombre2" />
+  </p>
+  <p>
+    <button type="submit">Imprime</button>
+  </p>
+</form>
+<router-outlet />
+<p>{{ title }}</p>

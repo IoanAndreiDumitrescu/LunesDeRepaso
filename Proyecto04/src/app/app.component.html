@@ -1,0 +1,16 @@
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <<div ng-app="" ng-init="mySwitch">
+  <label for="sistema" formControlName="carnetDeConducir"> Carnet de conducir </label>
+  <input ng-model="mySwitch" type="radio" value="si" id="si" name="carnetDeConducir" formControlName="carnetDeConducir" checked /> Si
+  <input ng-model="mySwitch=false" type="radio" value="no" id="no" name="carnetDeConducir" formControlName="carnetDeConducir"> No
+</div>
+  <p>
+    <label for="dni">DNI</label>
+    <input ng-disabled="mySwitch" type="text" id="dni" name="dni" formControlName="nombre" />
+  </p>
+  <p>
+    <button type="submit">Imprime</button>
+  </p>
+</form>
+<router-outlet />

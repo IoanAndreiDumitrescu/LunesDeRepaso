@@ -1,0 +1,14 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <p>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" formControlName="nombre" />
+  </p>
+  <p>
+    <label for="longitudNombre">Longitud Nombre</label>
+    <input type="text" id="longitudNombre" name="longitudNombre" [value]="title" readonly />
+  </p>
+  <p>
+    <button type="submit">Calcula</button>
+  </p>
+</form>
+<router-outlet />
