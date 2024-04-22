@@ -14,6 +14,17 @@
   </p>
   <button type="submit">Submit</button>
 </form>
+<div *ngIf="isFieldsShown">
+  <p>Su carnet de conducir es válido en los siguientes países:</p>
+  <ul>
+    <li *ngFor="let pais of paises">{{ pais }}</li>
+  </ul>
+</div>
+<div *ngIf="isSubmitted">
+  <p>DNI: {{ contactForm.get('nombre')?.value }}</p>
+  <p>Fecha de expedición: {{ contactForm.get('fechaExpedicion')?.value }}</p>
+  <p>Días con carnet: {{ getLicenseDurationAndImage().diffDays }}</p>
+  <img [src]="getLicenseDurationAndImage().imageUrl" alt="Carnet image" class="img-dimension" /></div>
 <div *ngIf="isSubmitted">
   <p>DNI: {{ contactForm.get('nombre')?.value }}</p>
   <p>Fecha de expedición: {{ contactForm.get('fechaExpedicion')?.value }}</p>
