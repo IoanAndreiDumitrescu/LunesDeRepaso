@@ -1,16 +1,21 @@
-
 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-  <<div ng-app="" ng-init="mySwitch">
-  <label for="sistema" formControlName="carnetDeConducir"> Carnet de conducir </label>
-  <input ng-model="mySwitch" type="radio" value="si" id="si" name="carnetDeConducir" formControlName="carnetDeConducir" checked /> Si
-  <input ng-model="mySwitch=false" type="radio" value="no" id="no" name="carnetDeConducir" formControlName="carnetDeConducir"> No
-</div>
-  <p>
+  <div>
+    <label for="sistema"> Carnet de conducir </label>
+    <input type="radio" value="si" id="si" name="carnetDeConducir" formControlName="carnetDeConducir" checked /> Si
+    <input type="radio" value="no" id="no" name="carnetDeConducir" formControlName="carnetDeConducir" /> No
+  </div>
+  <p *ngIf="isFieldsShown">
     <label for="dni">DNI</label>
-    <input ng-disabled="mySwitch" type="text" id="dni" name="dni" formControlName="nombre" />
+    <input type="text" id="dni" formControlName="nombre" />
   </p>
-  <p>
-    <button type="submit">Imprime</button>
+  <p *ngIf="isFieldsShown">
+    <label for="fecha">Fecha de expedición del Carnet</label>
+    <input type="date" id="fecha" formControlName="fechaExpedicion" />
   </p>
+  <button type="submit">Submit</button>
 </form>
+<div *ngIf="isSubmitted">
+  <p>DNI: {{ contactForm.get('nombre')?.value }}</p>
+  <p>Fecha de expedición: {{ contactForm.get('fechaExpedicion')?.value }}</p>
+</div>
 <router-outlet />

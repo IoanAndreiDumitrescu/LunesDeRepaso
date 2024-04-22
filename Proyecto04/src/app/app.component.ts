@@ -1,19 +1,25 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = '';
+  isSubmitted = false;
   contactForm = new FormGroup({
     nombre: new FormControl(),
+    carnetDeConducir: new FormControl(),
+    fechaExpedicion: new FormControl()
   });
 
   onSubmit() {
-    let nombre = this.contactForm.get("nombre")?.value;
-    this.title = `${nombre} (${nombre.length})`;
+    this.isSubmitted = true;
+  }
+
+  get isFieldsShown() {
+    return this.contactForm.get('carnetDeConducir')?.value === 'si';
   }
 }

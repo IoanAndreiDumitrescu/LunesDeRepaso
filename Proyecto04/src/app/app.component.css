@@ -1,0 +1,50 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  padding: 2rem;
+  background-color: #e6e6e6;
+  border-radius: 1rem;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+input[type="text"], input[type="date"] {
+  padding: .5rem;
+  margin-top: .5rem;
+  border-radius: .5rem;
+  border: 1px solid #bbbbbb;
+}
+
+input[type="radio"] {
+  margin: 0 .5rem 0 .25rem;
+}
+
+button[type="submit"] {
+  width: 100px;
+  padding: .5rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: .5rem;
+  color: white;
+  background-color: #a0522d;
+  cursor: pointer;
+}
+
+  button[type="submit"]:hover {
+    background-color: #8b4513;
+  }
+
+div {
+  font-weight: bold;
+  color: #4b0082;
+  margin: 2rem 0;
+}
+
+`router-outlet` {
+  display: none;
+}

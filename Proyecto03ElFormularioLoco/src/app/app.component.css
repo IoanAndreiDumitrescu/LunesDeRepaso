@@ -1,0 +1,33 @@
+/* Buttons */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+.changeRed {
+  background-color: #f44336;
+}
+
+.changeGreen {
+  background-color: #4caf50;
+}
+
+.changeBlue {
+  background-color: #008cba;
+}
+
+/* Paragraphs */
+p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}

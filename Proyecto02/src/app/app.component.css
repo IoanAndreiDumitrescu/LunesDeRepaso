@@ -1,0 +1,49 @@
+/* As container for the overall form */
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+  /* Styles for the paragraph wrapping label and input */
+  form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; /* gives space between each field */
+  }
+
+  /* Styles for the labels */
+  form label {
+    margin-bottom: 5px;
+    color: #333333;
+    font-size: 16px;
+  }
+
+  /* Styles for the input fields */
+  form input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+  }
+
+  /* Styles for the submit button */
+  form button[type="submit"] {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+    form button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
