@@ -26,7 +26,14 @@ export class AppComponent {
   });
   onSubmit() {
     let expeditionDate = new Date(this.contactForm.get('fechaExpedicion')?.value);
+     let expeditionDateString = this.contactForm.get('fechaExpedicion')?.value;
     let currentDate = new Date();
+
+    if (expeditionDateString == null || expeditionDateString == '') {
+      alert("Please enter a valid date");
+      return;
+    }
+
     if (expeditionDate > currentDate) {
       this.contactForm.setErrors({ 'invalid': true });
       alert("We don't live in the future, add the real date!");
