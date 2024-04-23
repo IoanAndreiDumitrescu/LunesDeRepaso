@@ -23,13 +23,22 @@ export class AppComponent {
   contactForm = new FormGroup({
     nombre: new FormControl(),
     carnetDeConducir: new FormControl(),
-    fechaExpedicion: new FormControl()
+    fechaExpedicion: new FormControl(),
+    dni: new FormControl() 
   });
-
   onSubmit() {
+    let expeditionDate = new Date(this.contactForm.get('fechaExpedicion')?.value);
+    let currentDate = new Date();
+
+    // If the expedition date is after the current date, prevent form submission and display an error message
+    if (expeditionDate > currentDate) {
+      this.contactForm.setErrors({ 'invalid': true });
+      alert("We don't live in the future, add the real date!");
+      return;
+    }
+
     this.isSubmitted = true;
   }
-
   get isFieldsShown() {
     return this.contactForm.get('carnetDeConducir')?.value === 'si';
   }

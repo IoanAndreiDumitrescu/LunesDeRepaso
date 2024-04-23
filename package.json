@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@angular/core": "^17.3.5",
     "@angular/forms": "^17.3.5"
   }
 }

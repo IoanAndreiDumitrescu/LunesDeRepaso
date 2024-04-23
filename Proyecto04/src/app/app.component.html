@@ -4,9 +4,14 @@
     <input type="radio" value="si" id="si" name="carnetDeConducir" formControlName="carnetDeConducir" checked /> Si
     <input type="radio" value="no" id="no" name="carnetDeConducir" formControlName="carnetDeConducir" /> No
   </div>
+
+  <p *ngIf="isFieldsShown">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" formControlName="nombre" />
+  </p>
   <p *ngIf="isFieldsShown">
     <label for="dni">DNI</label>
-    <input type="text" id="dni" formControlName="nombre" />
+    <input type="text" id="dni" formControlName="dni" />
   </p>
   <p *ngIf="isFieldsShown">
     <label for="fecha">Fecha de expedición del Carnet</label>
@@ -21,12 +26,10 @@
   </ul>
 </div>
 <div *ngIf="isSubmitted">
-  <p>DNI: {{ contactForm.get('nombre')?.value }}</p>
+  <p>Nombre: {{ contactForm.get('nombre')?.value }}</p>
+  <p>DNI: {{ contactForm.get('dni')?.value }}</p> <!-- Make sure to change 'nombre' to 'dni' here -->
   <p>Fecha de expedición: {{ contactForm.get('fechaExpedicion')?.value }}</p>
   <p>Días con carnet: {{ getLicenseDurationAndImage().diffDays }}</p>
-  <img [src]="getLicenseDurationAndImage().imageUrl" alt="Carnet image" class="img-dimension" /></div>
-<div *ngIf="isSubmitted">
-  <p>DNI: {{ contactForm.get('nombre')?.value }}</p>
-  <p>Fecha de expedición: {{ contactForm.get('fechaExpedicion')?.value }}</p>
+  <img [src]="getLicenseDurationAndImage().imageUrl" alt="Carnet image" class="img-dimension" />
 </div>
 <router-outlet />
