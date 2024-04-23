@@ -25,11 +25,19 @@
     <li *ngFor="let pais of paises">{{ pais }}</li>
   </ul>
 </div>
-<div *ngIf="isSubmitted">
-  <p>Nombre: {{ contactForm.get('nombre')?.value }}</p>
-  <p>DNI: {{ contactForm.get('dni')?.value }}</p> <!-- Make sure to change 'nombre' to 'dni' here -->
-  <p>Fecha de expedición: {{ contactForm.get('fechaExpedicion')?.value }}</p>
-  <p>Días con carnet: {{ getLicenseDurationAndImage().diffDays }}</p>
-  <img [src]="getLicenseDurationAndImage().imageUrl" alt="Carnet image" class="img-dimension" />
+<!-- ... -->
+<div *ngIf="oldValues">
+  <div *ngFor="let oldValue of oldValues">
+    <p>Nombre: {{ oldValue.nombre }}</p>
+    <p>DNI: {{ oldValue.dni }}</p>
+    <p>Fecha de expedición: {{ oldValue.fechaExpedicion }}</p>
+
+    <!-- extracting the days and image within the component class itself and add properties to oldValue before pushing it to oldValues-->
+
+    <p>Días con carnet: {{ oldValue.diffDays }}</p>
+    <img [src]="oldValue.imageUrl" alt="Carnet image" class="img-dimension" />
+  </div>
 </div>
+<!-- ... -->
+
 <router-outlet />

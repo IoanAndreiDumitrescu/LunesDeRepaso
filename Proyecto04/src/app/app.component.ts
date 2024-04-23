@@ -10,10 +10,8 @@ export class AppComponent {
   title = '';
   isSubmitted = false;
 
-  // array de paises
   paises: string[] = ['Alemania', 'Italia', 'Francia', 'Luxemburgo', 'Chile', 'Argentina'];
-
-  // imagenes url
+  oldValues: any[] = [];
   imageUrls: string[] = [
     'https://ih1.redbubble.net/image.826700821.3689/flat,750x,075,f-pad,750x1000,f8f8f8.u7.jpg',
     'https://media.makeameme.org/created/meh-its-ok-c7d6ab0d14.jpg',
@@ -29,15 +27,28 @@ export class AppComponent {
   onSubmit() {
     let expeditionDate = new Date(this.contactForm.get('fechaExpedicion')?.value);
     let currentDate = new Date();
-
-    // If the expedition date is after the current date, prevent form submission and display an error message
     if (expeditionDate > currentDate) {
       this.contactForm.setErrors({ 'invalid': true });
       alert("We don't live in the future, add the real date!");
       return;
     }
 
+    let newDni = this.contactForm.get('dni')?.value;
+    if (this.oldValues.find(oldValue => oldValue.dni === newDni)) {
+      this.contactForm.setErrors({ 'duplicateDni': true });
+      alert("The DNI already exists!");
+      return;
+    }
+
+    let { diffDays, imageUrl } = this.getLicenseDurationAndImage();
+
+    this.oldValues.push({
+      ...this.contactForm.value,
+      diffDays,
+      imageUrl
+    });
     this.isSubmitted = true;
+    this.contactForm.reset();
   }
   get isFieldsShown() {
     return this.contactForm.get('carnetDeConducir')?.value === 'si';
